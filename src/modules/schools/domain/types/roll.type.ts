@@ -1,4 +1,4 @@
-export type Roll = {
+export class Roll {
   date?: Date;
   total: number;
   european: number;
@@ -8,4 +8,4 @@ export type Roll = {
   melaa: number;
   other: number;
   international: number;
-};
+}

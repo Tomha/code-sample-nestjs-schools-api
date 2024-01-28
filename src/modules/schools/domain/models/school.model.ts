@@ -1,7 +1,8 @@
 import {Address} from '../types/address.type';
-import {Roll} from '../types/roll.type.d.ts';
+import {Type} from "class-transformer";
+import {Roll} from "../types/roll.type";
 
-export type School = {
+export class School {
   id: string;
   name: string;
   telephone?: string;
@@ -9,7 +10,9 @@ export type School = {
   email?: string;
   contactName?: string;
   url?: string;
+  @Type(() => Address)
   addressOne?: Address;
+  @Type(() => Address)
   addressTwo?: Address;
   urbanRuralIndicator: string;
   type: string;
@@ -33,6 +36,7 @@ export type School = {
   latitude: number;
   longitude: number;
   enrolmentScheme: string;
+  @Type(() => Roll)
   roll: Roll;
   isolationIndex: string;
   languageOfInstruction: string;
@@ -40,4 +44,4 @@ export type School = {
   cohortEntry: string;
   status: string;
   dateSchoolOpened?: Date;
-};
+}

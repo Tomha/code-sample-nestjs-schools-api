@@ -1,10 +1,11 @@
 import {SchoolsTableRow} from '../types/schools-table-row';
 import {School} from '../../domain/models/school.model';
+import {plainToInstance} from "class-transformer";
 
 export const createSchoolFromSchoolsTableRowFactory = (
   schoolsTableRow: SchoolsTableRow,
 ): School => {
-  return {
+  return plainToInstance(School, {
     id: schoolsTableRow.School_Id,
     name: schoolsTableRow.Org_Name,
     telephone: schoolsTableRow.Telephone,
@@ -39,7 +40,7 @@ export const createSchoolFromSchoolsTableRowFactory = (
     maoriElectorate: schoolsTableRow.Māori_Electorate,
     statisticalAreaTwoCode: schoolsTableRow.Statistical_Area_2_Code,
     statisticalAreaTwoDescription:
-      schoolsTableRow.Statistical_Area_2_Description,
+    schoolsTableRow.Statistical_Area_2_Description,
     ward: schoolsTableRow.Ward,
     colId: schoolsTableRow.Col_Id,
     colName: schoolsTableRow.Col_Name,
@@ -67,5 +68,5 @@ export const createSchoolFromSchoolsTableRowFactory = (
     dateSchoolOpened: schoolsTableRow.DateSchoolOpened
       ? new Date(schoolsTableRow.DateSchoolOpened)
       : undefined,
-  };
+  });
 };
