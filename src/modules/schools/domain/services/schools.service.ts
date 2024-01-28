@@ -1,11 +1,15 @@
 import {Injectable} from '@nestjs/common';
-import {SchoolRepositoryContract} from '../contracts/school-repository.contract';
+import {SchoolRepository} from "../../infrastructure/repositories/school.repository";
 
 @Injectable()
 export class SchoolsService {
-  constructor(private readonly schoolRepository: SchoolRepositoryContract) {}
+  constructor(private readonly schoolRepository: SchoolRepository) {}
 
-  async list(params: {page: number; pageSize: number; search: string}) {
+  async count(params: {search?: string}) {
+    return this.schoolRepository.count(params);
+  }
+
+  async list(params: {page: number; pageSize: number; search?: string}) {
     return this.schoolRepository.list(params);
   }
 
