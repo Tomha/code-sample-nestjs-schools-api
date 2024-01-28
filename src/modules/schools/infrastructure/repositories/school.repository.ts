@@ -5,6 +5,16 @@ import {SchoolsTable} from '../fixtures/schools-table';
 import {SchoolsTableRow} from '../types/schools-table-row';
 import {createSchoolFromSchoolsTableRowFactory} from '../factories/create-school-from-schools-table-row.factory';
 
+/**
+ * The choice to skip an ORM here is intentional.
+ *
+ * I'm not a huge fan of ORMs. They're great for CRUD apps, but I find they
+ * can mix up domain logic and persistence logic. I prefer to keep them
+ * separate.
+ *
+ * This is definitely a simple enough case to warrant an ORM, but I'm also
+ * demonstrating how I might approach a more complex project.
+ */
 @Injectable()
 export class SchoolRepository {
   constructor(private readonly sqlite: Database) {}

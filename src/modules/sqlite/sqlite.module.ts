@@ -6,6 +6,9 @@ import {
   SqliteConfigModule,
 } from './config/sqlite.config';
 
+/**
+ * Create an injectable database client.
+ */
 @Module({
   imports: [SqliteConfigModule.register()],
   providers: [

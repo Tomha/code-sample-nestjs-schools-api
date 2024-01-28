@@ -1,3 +1,7 @@
+/**
+ * Slightly verbose way of making sure that referencing table columns is
+ * "type-safe".
+ */
 export const SchoolsTable = {
   School_Id: 'School_Id',
   Org_Name: 'Org_Name',
