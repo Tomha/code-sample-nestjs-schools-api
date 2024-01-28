@@ -8,11 +8,13 @@ async function bootstrap() {
 
   // Setup Swagger
   const config = new DocumentBuilder()
-    .setTitle('Schools API')
+    .setTitle('Schools API Docs')
     .setVersion('1.0')
     .build();
   const document = SwaggerModule.createDocument(app, config);
-  SwaggerModule.setup('swagger', app, document);
+  SwaggerModule.setup('swagger', app, document, {
+    customSiteTitle: 'Schools API Docs',
+  });
 
   await app.listen(3000);
 }

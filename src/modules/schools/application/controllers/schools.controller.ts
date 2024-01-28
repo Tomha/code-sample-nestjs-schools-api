@@ -4,12 +4,13 @@ import {ListSchoolsQuery} from '../queries/list-schools.query';
 import {School} from '../../domain/models/school.model';
 import {SchoolResponse} from '../responses/school.response';
 import {SchoolsPageResponse} from '../responses/schools-page.response';
-import {ApiAcceptedResponse, ApiNotFoundResponse, ApiOkResponse} from "@nestjs/swagger";
+import {ApiAcceptedResponse, ApiNotFoundResponse, ApiOkResponse, ApiTags} from "@nestjs/swagger";
 import {plainToClass, plainToClassFromExist, plainToInstance} from "class-transformer";
 
 @Controller({
   path: 'v1',
 })
+@ApiTags('Schools')
 export class SchoolsController {
   constructor(private readonly schools: SchoolsService) {}
 
