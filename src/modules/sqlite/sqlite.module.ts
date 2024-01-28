@@ -1,6 +1,10 @@
 import {Module} from '@nestjs/common';
 import {Database} from 'sqlite';
-import {InjectSqliteConfig, SQLITE_CONFIG, SqliteConfig, SqliteConfigModule} from './config/sqlite.config';
+import {
+  SQLITE_CONFIG,
+  SqliteConfig,
+  SqliteConfigModule,
+} from './config/sqlite.config';
 
 @Module({
   imports: [SqliteConfigModule.register()],

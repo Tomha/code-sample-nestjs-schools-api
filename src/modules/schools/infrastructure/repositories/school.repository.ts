@@ -1,7 +1,7 @@
 import {Injectable} from '@nestjs/common';
 import {School} from '../../domain/models/school.model';
 import {Database} from 'sqlite';
-import {SchoolsTable} from "../fixtures/schools-table";
+import {SchoolsTable} from '../fixtures/schools-table';
 import {SchoolsTableRow} from '../types/schools-table-row';
 import {createSchoolFromSchoolsTableRowFactory} from '../factories/create-school-from-schools-table-row.factory';
 
@@ -28,7 +28,7 @@ export class SchoolRepository {
     search?: string;
   }): Promise<School[]> {
     let queryString = `SELECT * FROM schools`;
-    let queryParams: Record<string, any> = {};
+    const queryParams: Record<string, any> = {};
 
     if (params.search) {
       queryString += ` WHERE ${SchoolsTable.Org_Name} LIKE '%' || :search || '%'`;
@@ -46,18 +46,19 @@ export class SchoolRepository {
     return results.map(createSchoolFromSchoolsTableRowFactory);
   }
 
-  async count(params: {
-    search?: string;
-  }): Promise<number> {
+  async count(params: {search?: string}): Promise<number> {
     let queryString = `SELECT COUNT(*) as count FROM schools`;
-    let queryParams: Record<string, any> = {};
+    const queryParams: Record<string, any> = {};
 
     if (params.search) {
       queryString += ` WHERE ${SchoolsTable.Org_Name} LIKE '%' || :search || '%'`;
       queryParams[':search'] = params.search;
     }
 
-    const result = await this.sqlite.get<{count: number}>(queryString, queryParams);
+    const result = await this.sqlite.get<{count: number}>(
+      queryString,
+      queryParams,
+    );
 
     return result?.count || 0;
   }

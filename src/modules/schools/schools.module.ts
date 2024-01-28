@@ -7,9 +7,6 @@ import {SchoolsService} from './domain/services/schools.service';
 @Module({
   imports: [SqliteModule],
   controllers: [SchoolsController],
-  providers: [
-    SchoolsService,
-    SchoolRepository,
-  ],
+  providers: [SchoolsService, SchoolRepository],
 })
 export class SchoolsModule {}

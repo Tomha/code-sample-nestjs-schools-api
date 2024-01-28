@@ -1,13 +1,6 @@
-import {
-  Controller,
-  DefaultValuePipe,
-  Get, NotFoundException,
-  Param,
-  ParseIntPipe,
-  Query,
-} from '@nestjs/common';
+import {Controller, Get, NotFoundException, Param, Query} from '@nestjs/common';
 import {SchoolsService} from '../../../domain/services/schools.service';
-import {ListSchoolsQuery} from "../queries/list-schools.query";
+import {ListSchoolsQuery} from '../queries/list-schools.query';
 
 @Controller({
   path: 'v1',
@@ -25,9 +18,7 @@ export class SchoolsController {
   }
 
   @Get('/schools')
-  public async listSchools(
-    @Query() queryParams: ListSchoolsQuery,
-  ) {
+  public async listSchools(@Query() queryParams: ListSchoolsQuery) {
     const schools = await this.schools.list({
       page: queryParams.page,
       pageSize: queryParams.pageSize,
@@ -46,6 +37,6 @@ export class SchoolsController {
         count: schools.length,
         total,
       },
-    }
+    };
   }
 }
