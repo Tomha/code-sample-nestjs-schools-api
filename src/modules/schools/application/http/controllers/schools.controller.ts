@@ -1,7 +1,9 @@
 import {Controller, Get} from '@nestjs/common';
 import {SchoolsService} from '../../../domain/services/schools.service';
 
-@Controller()
+@Controller({
+  path: 'v1',
+})
 export class SchoolsController {
   constructor(private readonly schools: SchoolsService) {}
 
